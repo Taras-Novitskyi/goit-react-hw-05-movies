@@ -1,3 +1,6 @@
+import { Route, Routes } from "react-router-dom";
+import { Layout } from "./Layout/Layout";
+
 export const App = () => {
   return (
     <div
@@ -7,10 +10,15 @@ export const App = () => {
         justifyContent: 'center',
         alignItems: 'center',
         fontSize: 40,
-        color: '#010101'
+        color: '#010101',
       }}
     >
-      React homework template
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route path="movies" element={<div>movies</div>} />
+          <Route path="movies" element={<div>movies</div>} />
+        </Route>
+      </Routes>
     </div>
   );
 };
