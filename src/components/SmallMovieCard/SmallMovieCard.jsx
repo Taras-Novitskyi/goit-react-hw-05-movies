@@ -19,6 +19,6 @@ export const SmallMovieCard = ({ title, poster }) => {
 
 SmallMovieCard.propTypes = {
   title: PropTypes.string.isRequired,
-  poster: PropTypes.string.isRequired,
+  poster: PropTypes.string,
 };
 

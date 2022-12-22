@@ -1,5 +1,7 @@
 import { lazy } from 'react';
 import { Route, Routes } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { Layout } from '../Layout/Layout';
 import { Box } from 'components/Box/Box';
 const Home = lazy(() => import('../../pages/Home/Home'));
@@ -26,6 +28,7 @@ export const App = () => {
           <Route path="*" element={<NotFoundPage />} />
         </Route>
       </Routes>
+      <ToastContainer/>
     </Box>
   );
 };

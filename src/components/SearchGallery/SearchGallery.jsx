@@ -22,6 +22,13 @@ export const SearchGallery = ({ searchMovie, page, changePage }) => {
   }, [searchMovie]);
 
   useEffect(() => {
+    if (searchMovie === '') {
+       setIsShowGallery(false);
+       setTotalMovies(0);
+       setMovies(null);
+      return
+    }
+    
     async function fetchAPI() {
       try {
         setIsLoad(true);
