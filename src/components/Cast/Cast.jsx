@@ -2,21 +2,20 @@ import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { fetchFilmCast } from '../../services/fetchApi';
 import image from '../../images/no-data.svg';
+import { Box } from 'components/Box/Box';
+import { Item, Text, Image } from './Cast.styled';
 
-export const Cast = () => {
+const Cast = () => {
 	const { movieId } = useParams();
 	const [cast, setCast] = useState(null);
 
   useEffect(() => {
     async function fetchAPI() {
       try {
-        // setIsLoad(true);
 		  const { cast } = await fetchFilmCast(movieId);
 		  setCast(cast);
       } catch (error) {
         console.log(error);
-      } finally {
-        // setIsLoad(false);
       }
     }
 
@@ -28,19 +27,24 @@ export const Cast = () => {
   }
 
 	return (
-    <div>
-      <ul>
+    <Box as="ul">
         {cast.map(({ id, name, profile_path, character }) => (
-          <li key={id}>
-            <img
-              src={profile_path ? `https://image.tmdb.org/t/p/w500${profile_path}`: image}
+          <Item key={id}>
+            <Image
+              src={
+                profile_path
+                  ? `https://image.tmdb.org/t/p/w500${profile_path}`
+                  : image
+              }
               alt={name}
+              width='100'
             />
-            <p>{name}</p>
-            <p>Character: {character}</p>
-          </li>
+            <Text>{name}</Text>
+            <Text>Character: {character}</Text>
+          </Item>
         ))}
-      </ul>
-    </div>
+    </Box>
   );
 };
+
+export default Cast;

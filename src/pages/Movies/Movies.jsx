@@ -3,7 +3,7 @@ import { useSearchParams } from 'react-router-dom';
 import { Searchbar } from 'components/Searchbar/Searchbar';
 import { SearchGallery } from 'components/SearchGallery/SearchGallery';
 
-export const Movies = () => {
+const Movies = () => {
   const [query, setQuery] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
     const [searchParams, setSearchParams] = useSearchParams();
@@ -27,7 +27,7 @@ export const Movies = () => {
 
   return (
     <div>
-      <Searchbar onFormSubmit={handleFormSubmit} value={movieName} />
+      <Searchbar onFormSubmit={handleFormSubmit} />
       <SearchGallery
         searchMovie={query}
         page={currentPage}

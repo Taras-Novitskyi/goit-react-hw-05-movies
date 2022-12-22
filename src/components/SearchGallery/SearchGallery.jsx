@@ -1,13 +1,13 @@
 import { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import { toast } from 'react-toastify';
-import { Link } from './SearchGallery.styled';
 import { fetchSearchFilms } from '../../services/fetchApi';
 import { makeSmoothScroll } from 'services/makeSmoothScroll';
 import { Box } from 'components/Box/Box';
 import { Button } from 'components/Button/Button';
 import { Loader } from 'components/Loader/Loader';
-import { GalleryList, Item } from './SearchGallery.styled';
+import { GalleryList, Item, Link } from './SearchGallery.styled';
 import { SmallMovieCard } from 'components/SmallMovieCard/SmallMovieCard';
 
 export const SearchGallery = ({ searchMovie, page, changePage }) => {
@@ -98,3 +98,10 @@ export const SearchGallery = ({ searchMovie, page, changePage }) => {
     </>
   );
 };
+
+SearchGallery.propTypes = {
+  searchMovie: PropTypes.string.isRequired,
+  page: PropTypes.number.isRequired,
+  changePage: PropTypes.func.isRequired,
+};
+

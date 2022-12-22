@@ -6,11 +6,10 @@ import {
   Container,
   SearchForm,
   SearchBtn,
-  // BtnLabel,
   Input,
 } from './Searchbar.styled';
 
-export function Searchbar({ onFormSubmit, value }) {
+export function Searchbar({ onFormSubmit}) {
   const [searchMovie, setSearchMovie] = useState('');
 
   const handleSearchChange = event => {
@@ -42,7 +41,6 @@ export function Searchbar({ onFormSubmit, value }) {
         />
         <SearchBtn type="submit">
           <BsSearch />
-          {/* <BtnLabel>Search</BtnLabel> */}
         </SearchBtn>
       </SearchForm>
     </Container>

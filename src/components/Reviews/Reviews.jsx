@@ -1,21 +1,20 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { fetchFilmReviews } from '../../services/fetchApi';
+import { Item, Author, Review, Error } from './Reviews.styled';
+import { Box } from 'components/Box/Box';
 
-export const Reviews = () => {
+const Reviews = () => {
   const { movieId } = useParams();
   const [reviews, setReviews] = useState(null);
 
   useEffect(() => {
     async function fetchAPI() {
       try {
-        // setIsLoad(true);
         const { results } = await fetchFilmReviews(movieId);
         setReviews(results);
       } catch (error) {
         console.log(error);
-      } finally {
-        // setIsLoad(false);
       }
     }
 
@@ -27,20 +26,20 @@ export const Reviews = () => {
   }
 
   if (reviews.length === 0) {
-    return <p>We don't have any reviews for this movie.</p>;
+    return <Error>We don't have any reviews for this movie.</Error>;
   }
 
   return (
-    <div>
-      <ul>
+      <Box as="ul">
         {reviews.map(({ id, author, content }) => (
-          <li key={id}>
-            <p>Author: {author}</p>
-            <p>{content}</p>
-          </li>
+          <Item key={id}>
+            <Author>Author: {author}</Author>
+            <Review>{content}</Review>
+          </Item>
         ))}
-      </ul>
-    </div>
+      </Box>
   );
 };
+
+export default Reviews;
 

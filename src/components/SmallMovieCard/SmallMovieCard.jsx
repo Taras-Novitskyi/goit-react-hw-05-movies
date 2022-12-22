@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { Title, Container, ImgBox, Img } from './SmallMovieCard.styled';
 import image from '../../images/no-data.svg';
 
@@ -15,3 +16,9 @@ export const SmallMovieCard = ({ title, poster }) => {
     </Container>
   );
 };
+
+SmallMovieCard.propTypes = {
+  title: PropTypes.string.isRequired,
+  poster: PropTypes.string.isRequired,
+};
+

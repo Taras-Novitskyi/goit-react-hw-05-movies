@@ -1,4 +1,4 @@
-// import { Suspense } from 'react';
+import { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
 import { Sidebar } from 'components/Sidebar/Sidebar';
 import { GlobalStyle } from 'components/GlobalStyle';
@@ -8,9 +8,9 @@ export const Layout = () => {
     <div>
       <GlobalStyle />
       <Sidebar />
-      {/* <Suspense fallback={<div>Loading page...</div>}> */}
+      <Suspense fallback={<div>Loading page...</div>}>
         <Outlet />
-      {/* </Suspense> */}
+      </Suspense>
     </div>
   );
 };

@@ -1,14 +1,14 @@
-import { FetchTrendingFilms } from 'services/fetchApi';
-import { useState } from 'react';
-import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { Loader } from 'components/Loader/Loader';
+import { FetchTrendingFilms } from 'services/fetchApi';
 import { makeSmoothScroll } from 'services/makeSmoothScroll';
-import { TrandingList, Item, Link } from './TrandingGallery.styled';
 import { SmallMovieCard } from 'components/SmallMovieCard/SmallMovieCard';
 import { Button } from 'components/Button/Button';
 import { Box } from 'components/Box/Box';
+import { TrandingList, Item, Link } from './TrandingGallery.styled';
+
 
 export const TrandingGallery = () => {
   const [films, setFilms] = useState(null);
