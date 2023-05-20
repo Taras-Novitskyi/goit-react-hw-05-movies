@@ -32,7 +32,7 @@ Button.propTypes = {
   text: PropTypes.string.isRequired,
   onClick: PropTypes.func.isRequired,
   type: PropTypes.string,
-  onClickUp: PropTypes.func.isRequired,
-  isButtonUp: PropTypes.bool.isRequired,
+  onClickUp: PropTypes.func,
+  isButtonUp: PropTypes.bool,
   disabled: PropTypes.bool,
 };
