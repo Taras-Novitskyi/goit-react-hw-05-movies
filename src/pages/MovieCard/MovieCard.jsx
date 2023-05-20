@@ -2,6 +2,7 @@ import { Outlet, useParams, useLocation } from 'react-router-dom';
 import { useEffect, useState, Suspense } from 'react';
 import { FetchFilmDetails } from '../../services/fetchApi';
 import { BackLink } from 'components/BackLink/BackLink';
+import { MovieSkeleton } from '../../components/MovieSkeleton/MovieSkeleton';
 import {
   Container,
   Image,
@@ -21,6 +22,7 @@ import { Loader } from 'components/Loader/Loader';
 export const MovieCard = () => {
   const { movieId } = useParams();
   const [movie, setMovie] = useState(null);
+  const [isLoad, setIsLoad] = useState(false);
   const location = useLocation();
 
   const backLinkHref = location.state?.from ?? '/';
@@ -28,13 +30,13 @@ export const MovieCard = () => {
   useEffect(() => {
     async function fetchAPI() {
       try {
-        // setIsLoad(true);
+        setIsLoad(true);
         const result = await FetchFilmDetails(movieId);
         setMovie(result);
       } catch (error) {
         console.log(error);
       } finally {
-        // setIsLoad(false);
+        setIsLoad(false);
       }
     }
 
@@ -55,7 +57,7 @@ export const MovieCard = () => {
     : image;
 
   return (
-    <div>
+    isLoad ? <MovieSkeleton/> : <div>
       <BackLink to={backLinkHref}>Go back</BackLink>
       <Container>
         <ImageWrapp>

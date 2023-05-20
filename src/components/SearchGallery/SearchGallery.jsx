@@ -23,12 +23,12 @@ export const SearchGallery = ({ searchMovie, page, changePage }) => {
 
   useEffect(() => {
     if (searchMovie === '') {
-       setIsShowGallery(false);
-       setTotalMovies(0);
-       setMovies(null);
-      return
+      setIsShowGallery(false);
+      setTotalMovies(0);
+      setMovies(null);
+      return;
     }
-    
+
     async function fetchAPI() {
       try {
         setIsLoad(true);
@@ -91,7 +91,7 @@ export const SearchGallery = ({ searchMovie, page, changePage }) => {
             {movies.map(({ id, title, poster_path }) => (
               <Item key={id}>
                 <Link to={`${id}`} state={{ from: location }}>
-					<SmallMovieCard id={id} title={title} poster={poster_path}/>
+                  <SmallMovieCard id={id} title={title} poster={poster_path} />
                 </Link>
               </Item>
             ))}
@@ -111,4 +111,3 @@ SearchGallery.propTypes = {
   page: PropTypes.number.isRequired,
   changePage: PropTypes.func.isRequired,
 };
-
