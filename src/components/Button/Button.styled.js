@@ -55,6 +55,8 @@ export const ButtonUp = styled.button`
     color: #fff;
     scale: 1.05;
     background-color: rgb(114, 91, 85);
+
+    box-shadow: -2px 6px 10px rgba(0, 0, 0, 0.5);
   }
 
   &:active,
